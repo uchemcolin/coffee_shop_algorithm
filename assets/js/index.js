@@ -90,7 +90,7 @@ jQuery(document).ready(function () {
             }
         },
         submitHandler: function(form, event) {
-            //form.submit();
+
             event.preventDefault();
 
             var N = $("#max-no-of-people").val();
@@ -105,10 +105,12 @@ jQuery(document).ready(function () {
 
             var p = lambda_in_minutes/micro_in_minutes;
 
+            console.log("p: " + p);
+
             //Probability of it exceeding the maximum number of people expected on the queue
             var p_final = (Math.pow(p, (N + 1)) * (1 - p))/(1 - (Math.pow(p, (N + 1))))
 
-            var percentage = Math.round(p_final * 100);
+            var percentage = (p_final * 100).toFixed(1);
             console.log("N: " + N);
             console.log("t1: " + t1);
             console.log("t2: " + t2);
@@ -127,15 +129,16 @@ jQuery(document).ready(function () {
                 if(i == 0) {
 
                     var prob = ((1 - p)/(1 - (Math.pow(p, (N + 1)))));
-                    var prob_percentage = Math.round(prob * 100);
+                    //var prob_percentage = Math.round(prob * 100);
+                    var prob_percentage = (prob * 100).toFixed(1);
 
                     text = text + `
                         <div>Probability of ${i} people on the queue: ${prob}, Percentage: ${prob_percentage}%</div>
                     `;
                 } else {
 
-                    var prob = (Math.pow(p, (i)) * (1 - p))/(1 - (Math.pow(p, i)));
-                    var prob_percentage = Math.round(prob * 100);
+                    var prob = (Math.pow(p, (i)) * (1 - p))/(1 - (Math.pow(p, (N + 1))));
+                    var prob_percentage = (prob * 100).toFixed(1);
 
                     text = text + `
                         <div>Probability of ${i} people on the queue: ${prob}, Percentage: ${prob_percentage}%</div>
