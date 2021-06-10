@@ -1,5 +1,5 @@
 # coffee_shop_algorithm
-Contains a website that uses the Coffee Shop Algorithm to solve queuing problems
+Contains a java program that uses the Coffee Shop Algorithm to solve queuing problems
 
 The Coffee Shop Algorithm is an algorithm that was developed during my final year project in university of port harcourt that is based on the Queuing Systems.
 The Coffee Shop Algorithm is an algorithm that can be used to determine the probability of the number of people on a queue exceeding the maximum number of people 
